@@ -1,0 +1,306 @@
+/* ================= BIẾN MÀU ================= */
+:root {
+    --bg: #0b0f1a;
+    --text: #e5e7eb;
+    --accent: #38bdf8;
+}
+
+body.light {
+    --bg: #f8fafc;
+    --text: #0f172a;
+}
+
+/* ================= RESET + ẨN CON TRỎ ================= */
+* {
+    margin: 0;
+    box-sizing: border-box;
+    cursor: none !important;
+}
+
+/* ================= BODY ================= */
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* ================= HEADER ================= */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+nav a {
+    color: var(--text);
+    margin-left: 20px;
+    text-decoration: none;
+    opacity: 0.4;
+    transition: 0.3s;
+}
+
+nav a.active {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* ================= THANH TIẾN TRÌNH ================= */
+.progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    width: 0%;
+}
+
+/* ================= SECTION ================= */
+.panel {
+    min-height: 100vh;
+    padding: 160px 15%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* ================= BUTTON ================= */
+button {
+    padding: 14px 36px;
+    border: none;
+    border-radius: 40px;
+    background: var(--accent);
+    color: black;
+    font-weight: 600;
+}
+
+/* ================= BOX ================= */
+.stack {
+    display: flex;
+    gap: 30px;
+}
+
+.item {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 0.7s ease;
+}
+
+.item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.item {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #38bdf8, #818cf8);
+    display: grid;
+    place-items: center;
+
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 0.7s ease;
+
+    overflow: hidden; /* QUAN TRỌNG */
+}
+
+.item img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* ================= NÚT NHẢY ================= */
+.jump:hover {
+    animation: jump 0.8s infinite;
+}
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================= CURSOR CUSTOM ================= */
+.cursor {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+
+    transition:
+        width 0.25s ease,
+        height 0.25s ease,
+        background 0.25s ease,
+        border 0.25s ease;
+}
+
+/* Hover nút */
+.cursor.hover-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(56, 189, 248, 0.25);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+/* 1. Trong suốt */
+.cursor.style-1 {
+    background: transparent;
+}
+
+/* 2. Chấm tròn đặc */
+.cursor.style-2 {
+    background: var(--accent);
+    border: none;
+}
+
+/* 3. To hơn */
+.cursor.style-3 {
+    width: 30px;
+    height: 30px;
+}
+
+/* 4. Vuông */
+.cursor.style-4 {
+    border-radius: 0;
+}
+
+/* 5. Ring mỏng */
+.cursor.style-5 {
+    border-width: 1px;
+    background: transparent;
+}
+
+/* 6. Glow phát sáng */
+.cursor.style-6 {
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    border: none;
+}
+
+/* 7. Neon ring */
+.cursor.style-7 {
+    background: transparent;
+    box-shadow: 0 0 10px var(--accent), inset 0 0 10px var(--accent);
+}
+
+/* 8. Dot nhỏ xíu */
+.cursor.style-8 {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border: none;
+}
+
+/* 9. Crosshair */
+.cursor.style-9 {
+    background: transparent;
+    border-radius: 0;
+}
+.cursor.style-9::before,
+.cursor.style-9::after {
+    content: "";
+    position: absolute;
+    background: var(--accent);
+}
+.cursor.style-9::before {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+.cursor.style-9::after {
+    height: 100%;
+    width: 2px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
+
+/* 10. Scale khi hover */
+.cursor.style-10 {
+    transform: translate(-50%, -50%) scale(1.8);
+}
+
+/* 11. Blur mềm */
+.cursor.style-11 {
+    background: var(--accent);
+    filter: blur(2px);
+    border: none;
+}
+
+/* 12. Viền đứt */
+.cursor.style-12 {
+    border-style: dashed;
+    background: transparent;
+}
+/* ================= SCROLLBAR CUSTOM ================= */
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) rgba(255,255,255,0.06);
+}
+
+/* Chrome / Edge / Safari */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(6px);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        var(--accent),
+        rgba(56, 189, 248, 0.5)
+    );
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 12px var(--accent);
+}
+
+/* Ẩn nút mũi tên cho gọn */
+::-webkit-scrollbar-button {
+    display: none;
+}
+.highlight {
+    text-decoration: underline;
+    text-decoration-color: #fbbf24;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-skip-ink: auto;
+}
+p {
+    line-height: 1.7;
+}
