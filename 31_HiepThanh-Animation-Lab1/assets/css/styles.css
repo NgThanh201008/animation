@@ -1,0 +1,231 @@
+:root{
+    --main-color:#7c3aed;      /* tím hiện đại */
+    --accent-color:#ec4899;    /* hồng accent */
+    --bg:#f5f3ff;              /* nền tím rất nhạt */
+    --text:#1f2937;
+}
+
+/* ===== GENERAL ===== */
+body{
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin:0;
+    padding:40px;
+    background:var(--bg);
+    color:var(--text);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:2.4em;
+}
+
+section{
+    background:#fff;
+    padding:35px;
+    margin-bottom:45px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* ===== BÀI 1: BUTTON ===== */
+.btn{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,var(--main-color),var(--accent-color));
+    color:white;
+    border:none;
+    padding:14px 28px;
+    border-radius:999px;
+    margin:6px;
+    cursor:pointer;
+    font-size:1rem;
+    transition: transform .3s ease, box-shadow .3s ease, opacity .3s ease;
+}
+
+/* CHỈ 3 NÚT ĐẦU TRONG SECTION */
+section .btn:nth-of-type(-n+3)::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:120%;
+    height:100%;
+    background:linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.55),
+        transparent
+    );
+}
+
+/* hover chung */
+.btn:hover{
+    transform: translateY(-3px);
+    box-shadow:0 10px 20px rgba(124,58,237,.4);
+    opacity:.95;
+}
+
+/* hover RIÊNG cho 3 nút đầu */
+section .btn:nth-of-type(-n+3):hover{
+    background:linear-gradient(135deg,#8b5cf6,#f472b6);
+    box-shadow:0 14px 28px rgba(236,72,153,.45);
+}
+
+section .btn:nth-of-type(-n+3):hover::before{
+    left:120%;
+    transition:left .6s ease;
+}
+
+/* ===== BÀI 2: GALLERY ===== */
+.gallery{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:24px;
+}
+
+.image-container{
+    overflow:hidden;
+    border-radius:16px;
+    height:220px;
+}
+
+.gallery img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:scale(1);
+    transition: transform .5s ease, filter .5s ease;
+}
+
+.gallery img:hover{
+    transform:scale(1.12);
+    filter: brightness(1.05);
+}
+
+/* ===== BÀI 3: MENU ===== */
+.nav{
+    list-style:none;
+    display:flex;
+    gap:30px;
+    padding:0;
+}
+
+.nav a{
+    text-decoration:none;
+    color:var(--text);
+    font-weight:600;
+    position:relative;
+    padding-bottom:6px;
+}
+
+.nav a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0;
+    height:3px;
+    border-radius:2px;
+    background:linear-gradient(90deg,var(--main-color),var(--accent-color));
+    transition: width .3s ease;
+}
+
+.nav a:hover::after{
+    width:100%;
+}
+
+/* ===== BÀI 4: CARD ===== */
+.cards-container{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:#fff;
+    width:260px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+    text-align:center;
+    padding-bottom:25px;
+    transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.card:hover{
+    transform: translateY(-14px);
+    box-shadow:0 20px 40px rgba(124,58,237,.35);
+}
+
+.price{
+    color:var(--accent-color);
+    font-weight:bold;
+    font-size:1.1em;
+}
+/* ===== BÀI 5: BANNER ===== */
+.banner{
+    position: relative;
+    background: linear-gradient(
+        270deg,
+        var(--main-color),
+        var(--accent-color),
+        #6366f1
+    );
+    background-size: 400% 400%;
+    padding:120px 20px;
+    text-align:center;
+    border-radius:24px;
+    animation: gradient-flow 10s ease infinite;
+    overflow:hidden;
+}
+
+/* ÁNH SÁNG MỀM */
+.banner::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: radial-gradient(
+        circle at top,
+        rgba(255,255,255,.25),
+        transparent 60%
+    );
+    pointer-events:none;
+}
+
+/* TITLE */
+.hero-title{
+    color:white;
+    font-size:3.2em;
+    font-weight:700;
+    letter-spacing:1px;
+    animation: float-text 4s ease-in-out infinite;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes gradient-flow{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+@keyframes float-text{
+    0%{
+        transform: translateY(0);
+        opacity:1;
+    }
+    50%{
+        transform: translateY(-10px);
+        opacity:.95;
+    }
+    100%{
+        transform: translateY(0);
+        opacity:1;
+    }
+}
