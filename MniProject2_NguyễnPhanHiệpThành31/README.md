@@ -11,4 +11,5 @@
 - Thư viện: AOS, GSAP, Swiper.
 
 # Link demo (GitHub Pages)
-- [Dán link sau khi push lên GitHub tại đây]
+- [https://github.com/NgThanh201008/animation/tree/main/MniProject2_Nguy%E1%BB%85nPhanHi%E1%BB%87pTh%C3%A0nh31]
+- [file:///C:/MniProject2_NguyenP/index.html]
